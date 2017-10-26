@@ -2,7 +2,7 @@ require('normalize.css/normalize.css');
 require('styles/App.css');
 
 import React from 'react';
-const count = 15;
+const levelCount = 18;
 const INC_EACH_LEVEL = 4;
 
 class Ball extends React.Component {
@@ -31,23 +31,27 @@ class AppComponent extends React.Component {
     }, 50);
   }
 
-  renderBalls(number, counter) {
-    if (number < 0) return <span />;
+  renderBalls(size, counter) {
+    if (size < 0) return <span />;
     return (
       <div>
         {[...Array(counter)].map((d, i) =>
           <Ball
-            style={{ width: number * number / count, height: number * number / count, transform: `rotateY(${Date.now() / 30}deg)` }}
+            style={{
+              width: size * size / levelCount * 2,
+              height: size * size / levelCount * 2,
+              transform: `rotateY(${Date.now() / 30}deg)`
+            }}
             key={i}
           />
         )}
-        {this.renderBalls(number - 0.5, counter + INC_EACH_LEVEL)}
+        {this.renderBalls(size - 1, counter + INC_EACH_LEVEL)}
       </div>
     )
   }
 
-  calcDOMCount(count) {
-    let times = count * 2;
+  calcDOMCount(levelCount) {
+    let times = levelCount * 2;
     let result = 0;
     while (times--) {
       result += times * INC_EACH_LEVEL + 1;
@@ -59,9 +63,9 @@ class AppComponent extends React.Component {
     const { scale } = this.state;
     return (
       <div>
-        <p>Node count: {this.calcDOMCount(count)}</p>
+        <p>Node Count: {this.calcDOMCount(levelCount)}</p>
         <div className="index" style={{transform: `scaleX(${scale})`}}>
-          {this.renderBalls(count, 1)}
+          {this.renderBalls(levelCount, 1)}
         </div>
       </div>
     );
@@ -76,6 +80,5 @@ export default AppComponent;
 // The main thread's work
 let counter = 0;
 setInterval(() => {
-  console.log(counter++)
   document.querySelector('#spinner').style.transform = `rotate(${counter * 1}deg)`;
 }, 5);
