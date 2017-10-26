@@ -4,6 +4,13 @@ body, html {
   text-align: center;
 }
 
+#spinner {
+  width: 40px;
+  height: 40px;
+  background: black;
+  display: inline-block;
+}
+
 #app {
   height: 100%;
   padding-top: 50px;
