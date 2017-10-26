@@ -80,5 +80,14 @@ export default AppComponent;
 // The main thread's work
 let counter = 0;
 setInterval(() => {
-  document.querySelector('#spinner').style.transform = `rotate(${counter * 1}deg)`;
-}, 5);
+  counter++;
+  mainThreadCalcRate++;
+  document.querySelector('#spinner').style.transform = `rotate(${counter * 2}deg)`;
+}, 16);
+
+let mainThreadCalcRate = 0;
+// Main thread FPS detector
+setInterval(() => {
+  console.log(mainThreadCalcRate);
+  mainThreadCalcRate = 0;
+}, 1000);
