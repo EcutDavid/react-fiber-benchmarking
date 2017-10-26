@@ -2,7 +2,7 @@ require('normalize.css/normalize.css');
 require('styles/App.css');
 
 import React from 'react';
-const levelCount = 18;
+let levelCount = 18;
 const INC_EACH_LEVEL = 4;
 
 class Ball extends React.Component {
@@ -38,8 +38,8 @@ class AppComponent extends React.Component {
         {[...Array(counter)].map((d, i) =>
           <Ball
             style={{
-              width: size * size / levelCount * 2,
-              height: size * size / levelCount * 2,
+              width: size * size * size / levelCount / levelCount * 2,
+              height: size * size * size / levelCount / levelCount * 2,
               transform: `rotateY(${Date.now() / 30}deg)`
             }}
             key={i}
@@ -72,9 +72,6 @@ class AppComponent extends React.Component {
   }
 }
 
-AppComponent.defaultProps = {
-};
-
 export default AppComponent;
 
 // The main thread's work
@@ -88,6 +85,15 @@ setInterval(() => {
 let mainThreadCalcRate = 0;
 // Main thread FPS detector
 setInterval(() => {
+  // Update leverCount
+  try {
+    const inputValue = Number(document.querySelector('input').value);
+    levelCount = inputValue;
+
+  } catch(e) {
+    console.warn('why the input is not a number?');
+  }
+
   console.log(mainThreadCalcRate);
   mainThreadCalcRate = 0;
 }, 1000);

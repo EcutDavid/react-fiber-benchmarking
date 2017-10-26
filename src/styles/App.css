@@ -5,6 +5,11 @@ body, html {
   background: skyblue;
 }
 
+.layerInput {
+  padding: 10px 0;
+  color: #fff;
+}
+
 #spinner {
   width: 40px;
   height: 40px;
@@ -19,6 +24,7 @@ body, html {
   padding-top: 50px;
   perspective: 500px;
   -webkit-perspective: 5000px;
+  color: #fff;
 }
 
 .Ball {
