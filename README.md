@@ -2,7 +2,10 @@
 
 ![image](https://user-images.githubusercontent.com/10692276/32041888-845e0660-ba81-11e7-9100-d7518c041881.png)
 
-![image](https://user-images.githubusercontent.com/10692276/32041871-73eacebc-ba81-11e7-9857-e9b13dfaa5e2.png)
+Fiber splitting the originally sync reconciliation step to units of work, which is more responsive.   
+From the performance point of view, the new algorithm is better(such as won't generate a huge call stack).
+![image](https://user-images.githubusercontent.com/10692276/32083883-b30bb67a-bb11-11e7-9193-3b6b8f995089.png)
+
 
 To test React 16,
 ```
